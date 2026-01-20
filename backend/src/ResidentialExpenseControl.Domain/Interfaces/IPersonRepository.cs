@@ -10,6 +10,6 @@ namespace ResidentialExpenseControl.Domain.Interfaces
         Task<IEnumerable<Person>> GetAllAsync();
         Task AddAsync(Person person);
         Task DeleteAsync(Person person);
-        Task SaveChagnesAsync();
+        Task SaveChangesAsync();
     }
 }
