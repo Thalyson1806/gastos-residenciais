@@ -14,23 +14,14 @@ Este projeto foi desenvolvido como teste técnico demonstrando conhecimentos em:
 
 ## Arquitetura
 
-O projeto segue os princípios da Clean Architecture, separando responsabilidades em camadas:
+O projeto segue os princípios da Clean Architecture, separando responsabilidades em camadas.
 
-+-------------------------------------------------------------+
-|                         API Layer                           |
-|              (Controllers, Middlewares)                     |
-+-------------------------------------------------------------+
-|                    Application Layer                        |
-|               (Use Cases, DTOs, Interfaces)                 |
-+-------------------------------------------------------------+
-|                      Domain Layer                           |
-|            (Entities, Business Rules, Interfaces)           |
-+-------------------------------------------------------------+
-|                   Infrastructure Layer                      |
-|           (Repositories, Database, EF Core)                 |
-+-------------------------------------------------------------+
+### Fluxo de Dependências
+
+API → Application → Domain ← Infrastructure
 
 
+A camada Domain não possui dependências externas. Infrastructure implementa as interfaces definidas em Domain, seguindo o princípio de Inversão de Dependência (DIP).
 
 ### Responsabilidades das Camadas
 
