@@ -36,14 +36,14 @@ A camada Domain não possui dependências externas. Infrastructure implementa as
 ## Tecnologias Utilizadas
 
 ### Backend
-- .NET 8
-- C# 12
+- .NET 
+- C# 
 - Entity Framework Core
 - SQLite
 - Swagger/OpenAPI
 
 ### Frontend
-- React 18
+- React 
 - TypeScript
 - Vite
 - Axios
