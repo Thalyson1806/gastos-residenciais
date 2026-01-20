@@ -1,7 +1,8 @@
-﻿
-namespace ResidentialExpenseControl.Application.UseCases.Person.Interfaces
+﻿namespace ResidentialExpenseControl.Application.UseCases.Person.Interfaces
 {
- public interface IDeletePersonUseCase
+    // Interface para exclusão de pessoa
+    // Retorna Task sem valor pois DELETE não precisa retornar dados
+    public interface IDeletePersonUseCase
     {
         Task ExecuteAsync(Guid id);
     }

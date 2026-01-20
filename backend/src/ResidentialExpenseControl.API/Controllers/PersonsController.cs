@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ReisdentialExpenseControl.Application.UseCases.Person.Interfaces;
 using ResidentialExpenseControl.Application.DTOs.Person;
 using ResidentialExpenseControl.Application.UseCases.Person.Interfaces;
-using ResidentialExpenseCOntrol.Application.UseCases.Person.Interfaces;
 
 namespace ResidentialExpenseControl.API.Controllers
 {
+    // Controller responsável por receber requisições HTTP e delegar para Use Cases
+    
     [ApiController]
     [Route("api/[controller]")]
     public class PersonsController : ControllerBase
@@ -15,7 +15,7 @@ namespace ResidentialExpenseControl.API.Controllers
         private readonly IDeletePersonUseCase _deletePersonUseCase;
 
         // Injeção de dependência dos Use Cases
-        // Controller não conhece repositórios, apenas Use Cases
+    
         public PersonsController(
             ICreatePersonUseCase createPersonUseCase,
             IGetAllPersonsUseCase getAllPersonsUseCase,
@@ -27,16 +27,16 @@ namespace ResidentialExpenseControl.API.Controllers
         }
 
         // POST api/persons
+        // Cria uma nova pessoa e retorna 201 Created com a URL do recurso
         [HttpPost]
         public async Task<ActionResult<PersonResponse>> Create([FromBody] CreatePersonRequest request)
         {
             var response = await _createPersonUseCase.ExecuteAsync(request);
-
-            // 201 Created com a URL do recurso criado
             return CreatedAtAction(nameof(GetAll), new { id = response.Id }, response);
         }
 
         // GET api/persons
+        // Lista todas as pessoas cadastradas
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PersonResponse>>> GetAll()
         {
@@ -45,12 +45,11 @@ namespace ResidentialExpenseControl.API.Controllers
         }
 
         // DELETE api/persons/{id}
+        // Remove uma pessoa pelo ID - retorna 204 No Content se sucesso
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _deletePersonUseCase.ExecuteAsync(id);
-
-            // 204 No Content - padrão para DELETE bem-sucedido
             return NoContent();
         }
     }

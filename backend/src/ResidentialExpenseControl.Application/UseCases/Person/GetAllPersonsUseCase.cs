@@ -1,10 +1,11 @@
 ﻿using ResidentialExpenseControl.Application.DTOs.Person;
 using ResidentialExpenseControl.Application.UseCases.Person.Interfaces;
 using ResidentialExpenseControl.Domain.Interfaces;
-using ResidentialExpenseCOntrol.Application.UseCases.Person.Interfaces;
 
 namespace ResidentialExpenseControl.Application.UseCases.Person
 {
+    // Caso de uso para listagem de todas as pessoas
+    // Segue o princípio de responsabilidade única - faz apenas UMA coisa
     public class GetAllPersonsUseCase : IGetAllPersonsUseCase
     {
         private readonly IPersonRepository _personRepository;
@@ -19,7 +20,7 @@ namespace ResidentialExpenseControl.Application.UseCases.Person
             var persons = await _personRepository.GetAllAsync();
 
             // Mapeia entidades para DTOs
-          
+            // Em projetos maiores, usaríamos AutoMapper para isso
             return persons.Select(p => new PersonResponse
             {
                 Id = p.Id,
