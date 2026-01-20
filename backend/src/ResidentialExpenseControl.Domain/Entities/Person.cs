@@ -1,9 +1,11 @@
-﻿namespace ResidentialExpenseControl.Domain.Entities
+﻿using ResidentialExpenseControl.Domain.Exceptions;
+
+namespace ResidentialExpenseControl.Domain.Entities
 {
     public class Person
     {
         public Guid Id { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; private set; } = string.Empty;
         public int Age { get; private set; }
 
         // Construtor protegido para o EF Core conseguir instanciar
