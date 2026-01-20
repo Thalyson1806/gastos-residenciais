@@ -4,6 +4,8 @@ using ResidentialExpenseControl.Application.UseCases.Category;
 using ResidentialExpenseControl.Application.UseCases.Category.Interfaces;
 using ResidentialExpenseControl.Application.UseCases.Person;
 using ResidentialExpenseControl.Application.UseCases.Person.Interfaces;
+using ResidentialExpenseControl.Application.UseCases.Reports;
+using ResidentialExpenseControl.Application.UseCases.Reports.Interfaces;
 using ResidentialExpenseControl.Application.UseCases.Transaction;
 using ResidentialExpenseControl.Application.UseCases.Transaction.Interfaces;
 using ResidentialExpenseControl.Domain.Interfaces;
@@ -13,7 +15,7 @@ using ResidentialExpenseControl.Infrastructure.Repositories;
 namespace ResidentialExpenseControl.Infrastructure
 {
     // Classe de extensão para registrar todas as dependências
-    // Centraliza a configuração e mantém o Program.cs limpo
+    // Centraliza a configuração de DI e mantém o Program.cs limpo
     public static class DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
@@ -39,6 +41,9 @@ namespace ResidentialExpenseControl.Infrastructure
             // Transaction Use Cases
             services.AddScoped<ICreateTransactionUseCase, CreateTransactionUseCase>();
             services.AddScoped<IGetAllTransactionsUseCase, GetAllTransactionsUseCase>();
+
+            // Report Use Cases
+            services.AddScoped<IGetTotalsReportUseCase, GetTotalsReportUseCase>();
 
             return services;
         }
